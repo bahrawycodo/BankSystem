@@ -1,6 +1,8 @@
 #include <iostream>
-
+#include "Person.h";
 int main()
 {
-    std::cout << "Hello World!\n";
+	Person p(1, "mahmoud", "123");
+	Person p2(2, "mahmoud Elbahrawy", "12345678");
+	p2.Display();
 }

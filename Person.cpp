@@ -1,12 +1,14 @@
 #include "Person.h"
+#include <exception>
+#include "validation.h"
 //Constructors
 Person::Person() {
 	this->id = 0;
 }
 Person::Person(int id, string name, string password) {
-	this->id = id;
-	this->name = name;
-	this->password = password;
+	this->setId(id);
+	this->setName(name);
+	this->setPassword(password);
 }
 //Getters
 int Person::getId() {
@@ -23,10 +25,20 @@ void Person::setId(int id) {
 	this->id = id;
 }
 void Person::setName(string name) {
-	this->name = name;
+	try{	
+		this->name = Validation::Name(name);
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
 }
 void Person::setPassword(string password) {
-	this->password = password;
+	try {
+		this->password = Validation::Password(password);
+	}
+	catch (exception& e) {
+		cout << e.what();
+	}
 }
 void Person::Display() {
 	cout << this->id << endl;
