@@ -6,6 +6,7 @@ Employee::Employee(){
 	this->salary = 5000;
 }
 Employee::Employee(int id, string name, string password, double salary) : Person(id, name, password) {
+	this->salary = 5000;
 	this->setSalary(salary);
 }
 //Setters
