@@ -112,9 +112,15 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Admin.txt" />
-    <Text Include="Employee.txt" />
-    <Text Include="Clients.txt" />
+    <Text Include="Admin.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Clients.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Employee.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
