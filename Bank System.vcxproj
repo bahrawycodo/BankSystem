@@ -134,7 +134,6 @@
     <ClCompile Include="Bank System.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientManger.cpp" />
-    <ClCompile Include="DataSourceInterface.cpp" />
     <ClCompile Include="Employee.cpp" />
     <ClCompile Include="EmployeeManager.cpp" />
     <ClCompile Include="FileManager.cpp" />
@@ -165,6 +164,9 @@
     <Text Include="Admin.txt" />
     <Text Include="Clients.txt" />
     <Text Include="Employee.txt" />
+    <Text Include="lastAdmin.txt" />
+    <Text Include="lastClient.txt" />
+    <Text Include="lastEmployee.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

@@ -54,9 +54,6 @@
     <ClCompile Include="Parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DataSourceInterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ClientManger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -119,6 +116,15 @@
       <Filter>Resource Files</Filter>
     </Text>
     <Text Include="Employee.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="lastAdmin.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="lastClient.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="lastEmployee.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
