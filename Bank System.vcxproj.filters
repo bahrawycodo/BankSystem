@@ -36,12 +36,6 @@
     <ClCompile Include="AdminManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AddToEmployee.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AddToAdmin.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EmployeeManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,12 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AdminManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AddToEmployee.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AddToAdmin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EmployeeManager.h">

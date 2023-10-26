@@ -4,7 +4,9 @@
 //Constructors
 Person::Person() {
 	this->id = 0;
+
 }
+
 Person::Person(int id, string name, string password) {
 	this->setId(id);
 	this->setName(name);
