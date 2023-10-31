@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include <string>
 #include "Client.h"
 #include "Employee.h"
@@ -7,6 +8,7 @@ using namespace std;
 class FilesHelper
 {
 public:
+	static vector<string> split(string fileName);
 	static void saveLast(string fileName, int id);
 	static int getLast(string fileName);
 	static void saveOne(string fileName, string lastIdFile, string data);

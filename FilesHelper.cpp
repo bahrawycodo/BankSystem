@@ -12,6 +12,12 @@ string toString(double value) {
 	v.erase(v.find_last_not_of('.') + 1, string::npos);
 	return v;
 }
+vector<string> FilesHelper::split(string fileName) {
+	fstream File(fileName + ".txt", ios::in);
+	vector<string> ss = Parser::split(File);
+	File.close();
+	return ss;
+}
 void  FilesHelper::saveLast(string fileName, int id) {
 	fstream File(fileName + ".txt", fstream::out | fstream::trunc);
 	File << id;
@@ -40,8 +46,7 @@ void FilesHelper::saveEmployee(string fileName, string lastIdFile, Employee e) {
 };
 
 void FilesHelper::getClients() {
-	fstream File("Clients.txt", ios::in);
-	vector<string> ss = Parser::split(File);
+	vector<string> ss = FilesHelper::split("Clients");
 	for (int i = 0; i < ss.size(); ++i)
 	{
 		Client c(Parser::parseToClient(ss[i]));
@@ -50,11 +55,9 @@ void FilesHelper::getClients() {
 		cout << "Balance = " << c.getBalance() << endl;
 		cout << "========================================\n";
 	}
-	File.close();
 };
 void FilesHelper::getEmployees() {
-	fstream File("Employees.txt", ios::in);
-	vector<string> ss = Parser::split(File);
+	vector<string> ss = FilesHelper::split("Employees");
 	for (int i = 0; i < ss.size(); ++i)
 	{
 		Employee e(Parser::parseToEmployee(ss[i]));
@@ -63,11 +66,9 @@ void FilesHelper::getEmployees() {
 		cout << "Salary = " << e.getSalary() << endl;
 		cout << "========================================\n";
 	}
-	File.close();
 };
 void FilesHelper::getAdmins() {
-	fstream File("Admins.txt", ios::in);
-	vector<string> ss = Parser::split(File);
+	vector<string> ss = FilesHelper::split("Admins");
 	for (int i = 0; i < ss.size(); ++i)
 	{
 		Admin a(Parser::parseToAdmin(ss[i]));
@@ -76,7 +77,6 @@ void FilesHelper::getAdmins() {
 		cout << "Salary = " << a.getSalary() << endl;
 		cout << "========================================\n";
 	}
-	File.close();
 };
 void FilesHelper::clearFile(string fileName) {
 	fstream File(fileName + ".txt", fstream::out | fstream::trunc);
