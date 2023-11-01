@@ -2,6 +2,8 @@
 #include "Client.h"
 #include <exception>
 #include "validation.h"
+#include <vector>
+#include "FileManager.h"
 Client::Client() {
 	this->balance = 1500;
 }
@@ -10,6 +12,10 @@ Client::Client(int id, string name, string password, double balance) : Person(id
 	this->setBalance(balance);
 }
 //Setters
+void Client::setData(int id, string name, string password, double balance) {
+	Person::setData(id, name, password);
+	this->setBalance(balance);
+}
 void Client::setBalance(double balance) {
 	try {
 		this->balance = Validation::Balance(balance);
@@ -44,4 +50,15 @@ void Client::checkBalance() {
 void Client::Display() {
 	Person::Display();
 	cout << this->balance << endl;
+}
+void Client::updatePassword(int id,string password) {
+	vector<Client> clients = FileManager::getAllClients();
+	FileManager::removeAllClients();
+	for (Client& client : clients)
+	{
+		if (client.getId() == id) {
+			client.setPassword(password);
+		}
+		FileManager::addClient(client);
+	}
 }

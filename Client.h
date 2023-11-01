@@ -10,6 +10,7 @@ public:
 	Client(int id, string name, string password, double balance);
 	//Setters
 	void setBalance(double balance);
+	void setData(int id, string name, string password, double balance);
 	//getters
 	double getBalance();
 	//Methods
@@ -18,6 +19,6 @@ public:
 	void transferTo(double amount, Client& recipient);
 	void checkBalance();
 	void Display();
-
+	void updatePassword(int id, string password);
 };
 

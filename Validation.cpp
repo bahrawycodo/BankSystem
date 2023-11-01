@@ -1,4 +1,5 @@
 #include "Validation.h"
+#include "Client.h"
 string Validation::Name(string name){
     bool flag = false;
     for (int i = 0; i < name.size(); ++i) {
@@ -26,7 +27,21 @@ double Validation::Salary(double salary) {
         return salary;
     throw SalaryException();
 }
-
+Client* Validation::ClientLogin(Client* client) {
+    if (client != nullptr)
+        return client;
+    throw LoginException();
+}
+Employee* Validation::EmployeeLogin(Employee* employee) {
+    if (employee != nullptr)
+        return employee;
+    throw LoginException();
+}
+Admin* Validation::AdminLogin(Admin* admin) {
+    if (admin != nullptr)
+        return admin;
+    throw LoginException();
+}
 const char*NameException:: what() const throw() {
     return "The name must be alphabetic chars and min size 5 and max size 20\n";
     }
@@ -38,4 +53,7 @@ const char* BalanceException:: what() const throw() {
 }
 const char* SalaryException:: what() const throw() {
     return "Min Salary is 5000\n";
+}
+const char* LoginException:: what() const throw() {
+    return "Incorrect id or password\n";
 }

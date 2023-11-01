@@ -2,14 +2,17 @@
 #pragma once
 class FileManager: public DataSourceInterface
 {
-	static void addClient(Client c);
-	static void addEmployee(Employee e);
-	static void addAdmin(Employee a);
+public:
+	static void addClient(Client client);
+	static void addEmployee(Employee employee);
+	static void addAdmin(Admin admin);
 	static vector<Client> getAllClients();
 	static vector<Employee> getAllEmployees();
 	static vector<Admin> getAllAdmins();
 	static void removeAllClients();
 	static void removeAllEmployees();
 	static void removeAllAdmins();
+	static Employee* employeeLogin(int id, string password);
+	static Admin* adminLogin(int id, string password);
 };
 

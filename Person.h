@@ -16,10 +16,12 @@ public:
 	string getName();
 	string getPassword();
 	//Setters
+	void setData(int id, string name, string password);
 	void setId(int id);
 	void setName(string name);
 	void setPassword(string password);
 	//Methods
 	void Display();
+	virtual void updatePassword(int id, string password) = 0;
 	
 };

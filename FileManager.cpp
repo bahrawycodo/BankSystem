@@ -1,14 +1,14 @@
 #include "Parser.h"
 #include "FileManager.h"
 #include "FilesHelper.h"
-void FileManager::addClient(Client c) {
-	FilesHelper::saveClient(c);
+void FileManager::addClient(Client client) {
+	FilesHelper::saveClient(client);
 };
-void FileManager::addEmployee(Employee e) {
-	FilesHelper::saveEmployee("Employees","lastEmployee",e);
+void FileManager::addEmployee(Employee employee) {
+	FilesHelper::saveEmployee("Employees","lastEmployee", employee);
 };
-void FileManager::addAdmin(Employee a) {
-	FilesHelper::saveEmployee("Admins", "lastAdmin", a);
+void FileManager::addAdmin(Admin admin) {
+	FilesHelper::saveEmployee("Admins", "lastAdmin", admin);
 };
 vector<Client> FileManager::getAllClients() {
 	vector<string> ss = FilesHelper::split("Clients");
@@ -18,7 +18,6 @@ vector<Client> FileManager::getAllClients() {
 		c.push_back(Parser::parseToClient(ss[i]));
 	}
 	return c;
-
 };
 vector<Employee> FileManager::getAllEmployees() {
 	vector<string> ss = FilesHelper::split("Employees");
@@ -48,3 +47,25 @@ void FileManager::removeAllEmployees() {
 void FileManager::removeAllAdmins() {
 	FilesHelper::clearFile("Admins", "lastAdmin");
 };
+Employee* employeeLogin(int id, string password){
+	vector<Employee> employees = FileManager::getAllEmployees();
+	for (Employee& employee : employees)
+	{
+		if (employee.getId() == id && employee.getPassword() == password) {
+			return &employee;
+			break;
+		}
+	}
+	return nullptr;
+}
+Admin* adminLogin(int id, string password){
+	vector<Admin> admins = FileManager::getAllAdmins();
+	for (Admin& admin : admins)
+	{
+		if (admin.getId() == id && admin.getPassword() == password) {
+			return &admin;
+			break;
+		}
+	}
+	return nullptr;
+}

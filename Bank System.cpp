@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Client.h";
+#include "FilesHelper.h"
 int main()
 {
-	Client c(1, "mahmoud", "12345678",1500);
-	Client c2(2, "mahmoud Elbahrawy", "12345678",2000);
-	c2.transferTo(1000, c);
-	c.Display();
-	c2.Display();
+	//Client c(1, "mahmoud", "12345678", 2000);
+	//FilesHelper::saveClient(c);
+	//FilesHelper::saveClient(c);
+	//FilesHelper::saveClient(c);
+	//FilesHelper::saveClient(c);
+	FilesHelper::clearFile("Clients","lastClient");
 }
