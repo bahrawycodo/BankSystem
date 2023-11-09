@@ -21,7 +21,40 @@ void AdminManager::printAdminMenu(){
 	cout << "(11) Logout\n";
 	cout << "Your choise is: ";
 }
+void AdminManager::newAdmin() {
+	string name, password;
+	double salary;
+chooseName:
+	cout << "Write Admin Name (between 5 to 20 chars)\n";
+	cin.ignore();
+	getline(cin, name);
+	if (!Validation::Name(name)) {
+		Validation::NameException();
+		goto chooseName;
+	}
+choosePassword:
+	cout << "Write Admin Password (between 8 to 20)\n";
+	getline(cin, password);
+	if (!Validation::Password(password)) {
+		Validation::PasswordException();
+		goto choosePassword;
+	}
+chooseBalance:
+	cout << "Write Admin Salary (Min Salary = 5000)\n";
+	cin >> salary;
+	if (!Validation::Salary(salary))
+	{
+		Validation::SalaryException();
+		goto chooseBalance;
+	}
+	Admin *a = Admin::getAdmin();
+	a->setId(1);
+	a->setName(name);
+	a->setPassword(password);
+	a->setSalary(salary);
+	Shared::addAdmin(a);
 
+}
 void newEmployee(Admin* admin) {
 	string name, password;
 	double salary;
@@ -106,6 +139,8 @@ void listAllEmployees(Admin* admin) {
 	admin->listEmployee();
 }
 Admin* AdminManager::login(int id, string password){
+	if (Shared::getAdmin()->getId() == 0)
+		newAdmin();
 	Admin* a = Shared::getAdmin();
 	if (a->getId() == id && a->getPassword() == password)
 		return a;

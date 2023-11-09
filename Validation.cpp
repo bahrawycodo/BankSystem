@@ -78,3 +78,12 @@ void Validation::LoginException() {
 void Validation::LessZeroBalanceExeption() {
     cout << "Balance can't be less zero\n";
 }
+void Validation::NoAdmin() {
+    cout << "There is no admin ... Please add admin data\n";
+}
+void Validation::NoClients() {
+    cout << "There is no Clients ... Please ask admin to add you\n";
+}
+void Validation::NoEmployees() {
+    cout << "There is no Employees ... Please ask admin to add you\n";
+}

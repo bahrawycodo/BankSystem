@@ -20,4 +20,7 @@ public:
     static void SalaryException();
     static void LoginException();
     static void LessZeroBalanceExeption();
+    static void NoClients();
+    static void NoEmployees();
+    static void NoAdmin();
 };

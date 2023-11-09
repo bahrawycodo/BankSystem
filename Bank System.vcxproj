@@ -162,6 +162,7 @@
     <Text Include="Admins.txt" />
     <Text Include="Clients.txt" />
     <Text Include="Employees.txt" />
+    <Text Include="lastAdmin.txt" />
     <Text Include="lastClient.txt" />
     <Text Include="lastEmployee.txt" />
   </ItemGroup>

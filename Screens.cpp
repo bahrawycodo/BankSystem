@@ -7,6 +7,7 @@
 #include "EmployeeManager.h"
 #include "ClientManger.h"
 #include "Validation.h"
+#include "Shared.h"
 
 using namespace std;
 void Screens::bankName() {
@@ -104,57 +105,77 @@ void loginClientLoop(Client* client) {
 	}
 }
 void  loginAdmin() {
-	int id;
-	string password;
-	ChooseData:
-	cout << "Write your Id\n";
-	cin >> id;
-	cout << "Write your Password\n";
-	cin >> password;
-	Admin* admin = AdminManager::login(id, password);
-	if (admin == nullptr) {
+	if (Shared::getAdmin() == nullptr) {
+		Validation::NoAdmin();
+		AdminManager::newAdmin();
 		system("cls");
-		Validation::LoginException();
-		goto ChooseData;
+		login();
 	}
 	else {
-		loginAdminLoop(admin);
+		int id;
+		string password;
+	ChooseData:
+		cout << "Write your Id\n";
+		cin >> id;
+		cout << "Write your Password\n";
+		cin >> password;
+		Admin* admin = AdminManager::login(id, password);
+		if (admin == nullptr) {
+			system("cls");
+			Validation::LoginException();
+			goto ChooseData;
+		}
+		else {
+			loginAdminLoop(admin);
+		}
 	}
 }
 void loginEmployee() {
-	int id;
-	string password;
-	ChooseData:
-	cout << "Write your Id\n";
-	cin >> id;
-	cout << "Write your Password\n";
-	cin >> password;
-	Employee* employee = EmployeeManager::login(id, password);
-	if (employee == nullptr) {
-		system("cls");
-		Validation::LoginException();
-		goto ChooseData;
+	if (Shared::getEmployees().size() == 0) {
+		Validation::NoEmployees();
+		login();
 	}
 	else {
-		loginEmployeeLoop(employee);
+		int id;
+		string password;
+	ChooseData:
+		cout << "Write your Id\n";
+		cin >> id;
+		cout << "Write your Password\n";
+		cin >> password;
+		Employee* employee = EmployeeManager::login(id, password);
+		if (employee == nullptr) {
+			system("cls");
+			Validation::LoginException();
+			goto ChooseData;
+		}
+		else {
+			loginEmployeeLoop(employee);
+		}
 	}
 }
 void loginClient() {
-	int id;
-	string password;
-ChooseData:
-	cout << "Write your Id\n";
-	cin >> id;
-	cout << "Write your Password\n";
-	cin >> password;
-	Client* client = ClientManger::login(id, password);
-	if (client == nullptr) {
-		system("cls");
-		Validation::LoginException();
-		goto ChooseData;
+	if (Shared::getEmployees().size() == 0) {
+		Validation::NoClients();
+		login();
 	}
 	else {
-		loginClientLoop(client);
+		int id;
+		string password;
+	ChooseData:
+		cout << "Write your Id\n";
+		cin >> id;
+		cout << "Write your Password\n";
+		cin >> password;
+		Client* client = ClientManger::login(id, password);
+		if (client == nullptr) {
+			system("cls");
+			Validation::LoginException();
+			goto ChooseData;
+		}
+		else {
+			loginClientLoop(client);
+		}
 	}
 }
 
