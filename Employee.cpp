@@ -4,72 +4,50 @@
 #include "FilesHelper.h"
 #include <exception>
 #include "validation.h"
+#include "Shared.h"
 Employee::Employee(){
 	this->salary = 5000;
 }
-Employee::Employee(int id, string name, string password, double salary) : Person(id, name, password) {
+Employee::Employee(int id,string name, string password, double salary) : Person(id,name, password) {
 	this->salary = 5000;
 	this->setSalary(salary);
 }
 //Setters
-void Employee::setData(int id, string name, string password, double salary) {
-	Person::setData(id, name, password);
+void Employee::setData(string name, string password, double salary) {
+	Person::setData( name, password);
 	this->setSalary(salary);
 }
 
 void Employee::setSalary(double salary) {
-	try {
-		this->salary = Validation::Salary(salary);
-	}
-	catch (exception& e) {
-		cout << e.what();
-	}
+	if (Validation::Salary(salary))
+		this->salary = salary;
+}
+//Operator = Overloading
+void Employee::operator = (Employee e) {
+	this->setData(e.getName(), e.getPassword(), e.getSalary());
 }
 //getters
 double Employee::getSalary() {
 	return this->salary;
 }
 //Methods
+void Employee::DisplayMainInfo() {
+	Person::DisplayMainInfo();
+	cout << this->salary << endl;
+}
 void Employee::Display() {
 	Person::Display();
 	cout << this->salary << endl;
 }
 void Employee::addClient(Client &client) {
-	FileManager::addClient(client);
+	Shared::addClient(client);
 }
 Client* Employee::searchClient(int id) {
-	vector<Client> clients= FileManager::getAllClients();
-	for (Client& client : clients)
-	{
-		if (client.getId() ==id) {
-			return &client;
-			break;
-		}
-	}
-	return nullptr;
+	return Shared::getClient(id);
 }
 void Employee::listClient() {
-	FilesHelper::getClients();
+	Shared::printClients();
 }
 void Employee::editClient(int id, string name, string password, double balance) {
-	vector<Client> clients = FileManager::getAllClients();
-	FileManager::removeAllClients();
-	for (Client& client : clients)
-	{
-		if (client.getId() == id) {
-			client.setData(id,name,password,balance);
-		}
-		FileManager::addClient(client);
-	}
-}
-void Client::updatePassword(int id, string password) {
-	vector<Employee> employees = FileManager::getAllEmployees();
-	FileManager::removeAllEmployees();
-	for (Client& employee : employees)
-	{
-		if (employee.getId() == id) {
-			employee.setPassword(password);
-		}
-		FileManager::addEmployee(employee);
-	}
+	Shared::editClient(id, name, password, balance);
 }

@@ -1,6 +1,14 @@
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Admin.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Admin.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\AdminManager.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\AdminManager.obj
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Bank System.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Bank System.obj
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Client.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Client.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\ClientManger.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\ClientManger.obj
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Employee.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Employee.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\EmployeeManager.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\EmployeeManager.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\FileManager.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\FileManager.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\FilesHelper.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\FilesHelper.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Parser.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Parser.obj
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Person.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Person.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Screens.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Screens.obj
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Shared.obj
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Validation.cpp;C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Validation.obj

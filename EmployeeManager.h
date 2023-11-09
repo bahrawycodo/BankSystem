@@ -4,12 +4,12 @@
 class EmployeeManager
 {
 public:
-	static void printClientMenu();
+	static void printEmployeeMenu();
 	static void newClient(Employee* employee);
 	static void listAllClients(Employee* employee);
 	static void searchForClient(Employee* employee);
 	static void editClientInfo(Employee* employee);
-	static Client* login(int id, string password);
-	static bool employeeOptions(Client* client);
+	static Employee* login(int id, string password);
+	static bool employeeOptions(Employee* employee,int choice);
 };
 

@@ -5,7 +5,7 @@
 Person::Person() {
 	this->id = 0;
 }
-Person::Person(int id, string name, string password) {
+Person::Person(int id,string name, string password) {
 	this->setId(id);
 	this->setName(name);
 	this->setPassword(password);
@@ -21,32 +21,33 @@ string Person::getPassword() {
 	return this->password;
 }
 //Setters
-void Person::setData(int id, string name, string password) {
-	this->setId(id);
+void Person::setData(string name, string password) {
 	this->setName(name);
 	this->setPassword(password);
 }
 void Person::setId(int id) {
 	this->id = id;
 }
-void Person::setName(string name) {
-	try{	
-		this->name = Validation::Name(name);
+bool Person::setName(string name) {
+	if (Validation::Name(name)) {
+		this->name = name;
+		return true;
 	}
-	catch (exception& e) {
-		cout << e.what();
-	}
+	return false;
 }
-void Person::setPassword(string password) {
-	try {
-		this->password = Validation::Password(password);
+bool Person::setPassword(string password) {
+	if (Validation::Password(password))
+	{
+		this->password = password;
+		return true;
 	}
-	catch (exception& e) {
-		cout << e.what();
-	}
+	return false;
 }
-void Person::Display() {
+void Person::DisplayMainInfo() {
 	cout << this->id << endl;
 	cout << this->name << endl;
+}
+void Person::Display() {
+	Person::DisplayMainInfo();
 	cout << this->password << endl;
 }

@@ -44,39 +44,40 @@ void FilesHelper::saveClient(Client c) {
 void FilesHelper::saveEmployee(string fileName, string lastIdFile, Employee e) {
 	FilesHelper::saveOne(fileName, lastIdFile, e.getName() + "&" + e.getPassword() + "&" + toString(e.getSalary()));
 };
-
+//void FilesHelper::saveAdmin(Admin* admin) {
+//	fstream File("Admins.txt", fstream::app);
+//	File << 1 << "&" << "&" << admin->getName() << "&" << admin->getPassword() << "&" << admin->getSalary() << endl;
+//	File.close();
+//}
 void FilesHelper::getClients() {
+	Client c;
 	vector<string> ss = FilesHelper::split("Clients");
 	for (int i = 0; i < ss.size(); ++i)
 	{
-		Client c(Parser::parseToClient(ss[i]));
-		cout << "Id = " << c.getId() << endl;
-		cout << "Name = " << c.getName() << endl;
-		cout << "Balance = " << c.getBalance() << endl;
+		c = Parser::parseToClient(ss[i]);
+		c.DisplayMainInfo();
 		cout << "========================================\n";
 	}
 };
 void FilesHelper::getEmployees() {
 	vector<string> ss = FilesHelper::split("Employees");
+	Employee e;
 	for (int i = 0; i < ss.size(); ++i)
 	{
-		Employee e(Parser::parseToEmployee(ss[i]));
-		cout << "Id = " << e.getId() << endl;
-		cout << "Name = " << e.getName() << endl;
-		cout << "Salary = " << e.getSalary() << endl;
+		e= Parser::parseToEmployee(ss[i]);
+		e.DisplayMainInfo();
 		cout << "========================================\n";
 	}
 };
 void FilesHelper::getAdmins() {
 	vector<string> ss = FilesHelper::split("Admins");
-	for (int i = 0; i < ss.size(); ++i)
-	{
-		Admin a(Parser::parseToAdmin(ss[i]));
-		cout << "Id = " << a.getId() << endl;
-		cout << "Name = " << a.getName() << endl;
-		cout << "Salary = " << a.getSalary() << endl;
-		cout << "========================================\n";
-	}
+	Employee e = Parser::parseToEmployee(ss[0]);
+	Admin* a = Admin::getAdmin();
+
+	a->setId(e.getId());
+	a->setData(e.getName(), e.getPassword(), e.getSalary());
+	a->DisplayMainInfo();
+	cout << "========================================\n";
 };
 void FilesHelper::clearFile(string fileName) {
 	fstream File(fileName + ".txt", fstream::out | fstream::trunc);

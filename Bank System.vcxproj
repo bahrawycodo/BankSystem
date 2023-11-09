@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -139,6 +139,7 @@
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Screens.cpp" />
+    <ClCompile Include="Shared.cpp" />
     <ClCompile Include="Validation.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,19 +155,15 @@
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Screens.h" />
+    <ClInclude Include="Shared.h" />
     <ClInclude Include="Validation.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Admin.txt" />
+    <Text Include="Admins.txt" />
     <Text Include="Clients.txt" />
-    <Text Include="Employee.txt" />
-    <Text Include="lastAdmin.txt" />
+    <Text Include="Employees.txt" />
     <Text Include="lastClient.txt" />
     <Text Include="lastEmployee.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include=".gitignore" />
-    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

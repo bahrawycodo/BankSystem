@@ -11,6 +11,5 @@ public:
 	static vector<string> split(fstream &line);
 	static Client parseToClient(string line);
 	static Employee parseToEmployee(string line);
-	static Admin parseToAdmin(string line);
 };
 

@@ -36,13 +36,9 @@ vector<string> Parser::split(fstream &line ) {
 };
 Client Parser::parseToClient(string line) {
 	string *arrT = parse4BySeperator(line, "&");
-	return { stoi(arrT[0]),arrT[1],arrT[2],stod(arrT[3])};
+	return {stoi(arrT[0]), arrT[1],arrT[2],stod(arrT[3])};
 };
 Employee Parser::parseToEmployee(string line) {
 	string* arrT = parse4BySeperator(line, "&");
-	return { stoi(arrT[0]),arrT[1],arrT[2],stod(arrT[3]) };
-};
-Admin Parser::parseToAdmin(string line) {
-	string* arrT = parse4BySeperator(line, "&");
-	return { stoi(arrT[0]),arrT[1],arrT[2],stod(arrT[3]) };
+	return { stoi(arrT[0]), arrT[1],arrT[2],stod(arrT[3]) };
 };

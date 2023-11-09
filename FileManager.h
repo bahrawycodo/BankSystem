@@ -8,11 +8,9 @@ public:
 	static void addAdmin(Admin admin);
 	static vector<Client> getAllClients();
 	static vector<Employee> getAllEmployees();
-	static vector<Admin> getAllAdmins();
+	static Admin* getAllAdmins();
 	static void removeAllClients();
 	static void removeAllEmployees();
 	static void removeAllAdmins();
-	static Employee* employeeLogin(int id, string password);
-	static Admin* adminLogin(int id, string password);
 };
 

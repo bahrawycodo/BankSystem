@@ -5,8 +5,8 @@
 class AdminManager
 {
 public:
-	static void printClientMenu();
+	static void printAdminMenu();
 	static Admin* login(int id, string password);
-	static bool AdminOptions(Admin* admin);
+	static bool adminOptions(Admin* admin,int choice);
 };
 

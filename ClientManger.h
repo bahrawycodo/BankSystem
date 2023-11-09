@@ -5,8 +5,8 @@ class ClientManger
 {
 public:
 	static void printClientMenu();
-	static void updatePassword(Client* client);
+	static void updatePassword(Person* person);
 	static Client* login(int id, string password);
-	static bool clientOptions(Client* client);
+	static bool clientOptions(Client* client,int choice);
 };
 
