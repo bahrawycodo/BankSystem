@@ -10,9 +10,6 @@ void Shared::FirstLoad() {
 	clients = FileManager::getAllClients();
 	employees = FileManager::getAllEmployees();
 	admin = FileManager::getAllAdmins();
-	//FileManager::removeAllAdmins();
-	//FileManager::removeAllClients();
-	//FileManager::getAllEmployees();
 }
 //Last Load
 
