@@ -4,7 +4,5 @@
 #include "Screens.h"
 int main()
 {
-	Shared::FirstLoad();
 	Screens::runApp();
-	atexit(Shared::OnEnd );
 }

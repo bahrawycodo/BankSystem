@@ -202,6 +202,8 @@ void Screens::loginScreen(int c) {
 }
 
 void Screens::runApp() {
+	Shared::FirstLoad();
 	welcomeScreen();
 	login();
+	atexit(Shared::OnEnd);
 }

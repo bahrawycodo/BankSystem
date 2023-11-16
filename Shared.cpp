@@ -120,6 +120,8 @@ void Shared::printClients() {
 		c.DisplayMainInfo();
 		cout << "========================================\n";
 	}
+	if (clients.size() == 0)
+		cout << "There aren't any Clients\n";
 };
 void Shared::printEmployees() {
 	for (Employee e :employees)
@@ -127,6 +129,8 @@ void Shared::printEmployees() {
 		e.DisplayMainInfo();
 		cout << "========================================\n";
 	}
+	if (employees.size() == 0)
+		cout << "There aren't any Clients\n";
 };
 void Shared::printAdmin() {
 		admin->DisplayMainInfo();
