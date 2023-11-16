@@ -194,7 +194,7 @@ void addNewEmployee() {
 	double salary;
 	cout << "Write Employee Name (between 5 and 20 chars)\n";
 	cin >> name;
-	cout << "Write Employee PAssword (between 8 and 20 chars)\n";
+	cout << "Write Employee Password (between 8 and 20 chars)\n";
 	cin >> password;
 	cout << "Write Employee Salary (Min Salary is 5000)\n";
 	cin >> salary;
