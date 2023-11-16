@@ -9,7 +9,8 @@ void EmployeeManager::printEmployeeMenu(){
 	cout << "(4) Search for client\n";
 	cout << "(5) List all clients\n";
 	cout << "(6) Edit client info\n";
-	cout << "(7) Logout\n";
+	cout << "(7) Delete client\n";
+	cout << "(8) Logout\n";
 }
 void EmployeeManager::newClient(Employee* employee){
 	string name, password;
@@ -95,7 +96,25 @@ chooseBalance:
 		goto chooseBalance;
 	}
 	employee->editClient(id, name, password, balance);
+}
+void EmployeeManager::deleteClient(Employee* employee) {
+	if (Shared::getEmployees().size() == 0) {
+		Validation::NoClients();
+		return;
+	}
+	int id;
+chooseId:
+	cout << "Write Client Id ";
+	cin >> id;
+	Client* c = employee->searchClient(id);
 
+	if (c == nullptr) {
+		cout << "Please choose a valid Id \n";
+		goto chooseId;
+	}
+	else {
+		employee->deleteClient(id);
+	}
 }
 Employee* EmployeeManager::login(int id, string password) { 
 	Employee* e = Shared::getEmployee(id);
@@ -126,6 +145,9 @@ bool EmployeeManager::employeeOptions(Employee* employee,int choice) {
 		EmployeeManager::editClientInfo(employee);
 		break;
 	case 7:
+		EmployeeManager::deleteClient(employee);
+		break;
+	case 8:
 		flag = false;
 		break;
 	default:

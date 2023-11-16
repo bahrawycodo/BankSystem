@@ -14,11 +14,13 @@ void AdminManager::printAdminMenu(){
 	cout << "(4) Search for client\n";
 	cout << "(5) List all clients\n";
 	cout << "(6) Edit client info\n";
-	cout << "(7) Add new Employee\n";
-	cout << "(8) Search for Employee\n";
-	cout << "(9) List all Employees\n";
-	cout << "(10) Edit Employee info\n";
-	cout << "(11) Logout\n";
+	cout << "(7) Delete client\n";
+	cout << "(8) Add new Employee\n";
+	cout << "(9) Search for Employee\n";
+	cout << "(10) List all Employees\n";
+	cout << "(11) Edit Employee info\n";
+	cout << "(12) Delete Employee\n";
+	cout << "(13) Logout\n";
 	cout << "Your choise is: ";
 }
 void AdminManager::newAdmin() {
@@ -138,6 +140,25 @@ chooseBalance:
 void listAllEmployees(Admin* admin) {
 	admin->listEmployee();
 }
+void deleteEmployee(Admin* admin) {
+	if (Shared::getEmployees().size() == 0) {
+		Validation::NoEmployees();
+		return;
+	}
+	int id;
+chooseId:
+	cout << "Write Employee Id ";
+	cin >> id;
+	Employee* e = admin->searchEmployee(id);
+
+	if (e == nullptr) {
+		cout << "Please choose a valid Id \n";
+		goto chooseId;
+	}
+	else {
+		admin->deleteEmployee(id);
+	}
+}
 Admin* AdminManager::login(int id, string password){
 	if (Shared::getAdmin()->getId() == 0)
 		newAdmin();
@@ -169,18 +190,24 @@ bool AdminManager::adminOptions(Admin* admin,int choice){
 			EmployeeManager::editClientInfo(admin);
 			break;
 		case 7:
-			newEmployee(admin);
+			EmployeeManager::deleteClient(admin);
 			break;
 		case 8:
-			searchForEmployee(admin);
+			newEmployee(admin);
 			break;
 		case 9:
-			listAllEmployees(admin);
+			searchForEmployee(admin);
 			break;
 		case 10:
-			editEmployee(admin);
+			listAllEmployees(admin);
 			break;
 		case 11:
+			editEmployee(admin);
+			break;
+		case 12:
+			deleteEmployee(admin);
+			break;
+		case 13:
 			flag = false;
 			break;
 		default:

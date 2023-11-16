@@ -49,18 +49,18 @@ vector<Employee> Shared::getEmployees() {
 	return employees;
 };
 
-//void Shared::reloadClients() {
-//	for (int i = 0; i < clients.size(); i++)
-//	{
-//		clients[i].setId(i);
-//	}
-//}
-//void Shared::reloadEmployees() {
-//	for (int i = 0; i < employees.size(); i++)
-//	{
-//		employees[i].setId(i);
-//	}
-//}
+void Shared::reloadClients() {
+	for (int i = 0; i < clients.size(); i++)
+	{
+		clients[i].setId(i);
+	}
+}
+void Shared::reloadEmployees() {
+	for (int i = 0; i < employees.size(); i++)
+	{
+		employees[i].setId(i);
+	}
+}
 
 
 //Getters By Id
@@ -95,14 +95,14 @@ void Shared::addAdmin(Admin *a) {
 	a->setId(1);
 };
 //Delete Methods
-//void Shared::deleteClient(int id) {
-//	clients.erase(clients.begin()+id-1);
-//	Shared::reloadClients();
-//}
-//void Shared::deleteEmployee(int id) {
-//	employees.erase(employees.begin() + id - 1);
-//	Shared::reloadEmployees();
-//}
+void Shared::deleteClient(int id) {
+	clients.erase(clients.begin()+id-1);
+	Shared::reloadClients();
+}
+void Shared::deleteEmployee(int id) {
+	employees.erase(employees.begin() + id - 1);
+	Shared::reloadEmployees();
+}
 //Edit Methods
 void Shared::editClient(int id, string name, string password, double balance) {
 	clients[id-1].setData(name, password, balance == NULL ? clients[id].getBalance() : balance);

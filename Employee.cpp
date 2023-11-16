@@ -51,3 +51,6 @@ void Employee::listClient() {
 void Employee::editClient(int id, string name, string password, double balance) {
 	Shared::editClient(id, name, password, balance);
 }
+void Employee::deleteClient(int id) {
+	Shared::deleteClient(id);
+}

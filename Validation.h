@@ -20,6 +20,8 @@ public:
     static void SalaryException();
     static void LoginException();
     static void LessZeroBalanceExeption();
+    static void LogNoClients();
+    static void LogNoEmployees();
     static void NoClients();
     static void NoEmployees();
     static void NoAdmin();

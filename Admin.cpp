@@ -24,3 +24,6 @@ void Admin::editEmployee(int id, string name, string password, double salary) {
 void Admin::listEmployee() {
 	Shared::printEmployees();
 }
+void Admin::deleteEmployee(int id) {
+	Shared::deleteEmployee(id);
+}

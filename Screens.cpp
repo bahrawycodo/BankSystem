@@ -132,7 +132,7 @@ void  loginAdmin() {
 }
 void loginEmployee() {
 	if (Shared::getEmployees().size() == 0) {
-		Validation::NoEmployees();
+		Validation::LogNoEmployees();
 		login();
 	}
 	else {
@@ -156,7 +156,7 @@ void loginEmployee() {
 }
 void loginClient() {
 	if (Shared::getEmployees().size() == 0) {
-		Validation::NoClients();
+		Validation::LogNoClients();
 		login();
 	}
 	else {

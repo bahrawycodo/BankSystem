@@ -24,16 +24,16 @@ public:
 	static Client* getClient(int id);
 	static Employee* getEmployee(int id);
 	//Reload
-	//static void reloadClients();
-	//static void reloadEmployees();
+	static void reloadClients();
+	static void reloadEmployees();
 
 	//Addition Methods
 	static void addClient(Client &c);
 	static void addEmployee(Employee &e);
 	static void addAdmin(Admin* a);
 	//Delete Methids
-	//static void deleteClient(int id);
-	//static void deleteEmployee(int id);
+	static void deleteClient(int id);
+	static void deleteEmployee(int id);
 
 	//Edit Methods
 	static void editClient(int id, string name, string password,double balance = NULL);

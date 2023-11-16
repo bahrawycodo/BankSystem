@@ -1,25 +1,3 @@
-﻿  Admin.cpp
+﻿  EmployeeManager.cpp
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  AdminManager.cpp
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Bank System.cpp
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  ClientManger.cpp
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Employee.cpp
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  EmployeeManager.cpp
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  FileManager.cpp
-  FilesHelper.cpp
-  Screens.cpp
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Screens.cpp(196,3): warning C4551: function call missing argument list
-  Shared.cpp
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.cpp(86,24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.cpp(90,26): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\FilesHelper.cpp(59): warning C4172: returning address of local variable or temporary: c
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\FilesHelper.cpp(68): warning C4172: returning address of local variable or temporary: e
   Bank System.vcxproj -> C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Bank System.exe
