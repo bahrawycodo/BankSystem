@@ -111,7 +111,7 @@ void editEmployeePassword(Admin* admin) {
 	int id;
 	string password;
 	ReadData::ReadClientId(admin, id);
-	ReadData::ReadPassword(password);
+	ReadData::ReadPassword(password,true);
 
 	admin->editEmployee(id, "", password, NULL);
 	system("cls");
@@ -131,8 +131,7 @@ void editEmployeeSalary(Admin* admin) {
 	cout << "Employee Salary Edited Successfully\n";
 
 }
-bool employeeEditOptions(Admin* admin, int choice) {
-	bool flag = true;
+void employeeEditOptions(Admin* admin, int choice) {
 	switch (choice)
 	{
 	case 1:
@@ -147,15 +146,10 @@ bool employeeEditOptions(Admin* admin, int choice) {
 	case 4:
 		editEmployeeSalary(admin);
 		break;
-	case 5:
-		flag = false;
-		break;
 	default:
 		cout << "\n\nWRONG INPUT!\n\n";
 		break;
 	}
-	return flag;
-
 }
 
 void listAllEmployees(Admin* admin) {
@@ -180,20 +174,12 @@ Admin* AdminManager::login(int id, string password){
 	return nullptr;
 }
 void employeeEditLoop(Admin* admin) {
-	bool flag = true;
-	while (flag) {
 		system("cls");
 		printEmployeeEditMenu();
 		int choice = Screens::yourChoice();
 		system("cls");
-		flag = employeeEditOptions(admin, choice);
-		if (flag) {
-			system("pause");
-		}
-		else {
-			Screens::loginAdminLoop(admin);
-		}
-	}
+		employeeEditOptions(admin, choice);
+		return;
 }
 bool AdminManager::adminOptions(Admin* admin,int choice){
 	bool flag = true;

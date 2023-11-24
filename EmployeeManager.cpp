@@ -67,7 +67,7 @@ void EmployeeManager::editClientPassword(Employee* employee) {
 	int id;
 	string password;
 	ReadData::ReadClientId(employee, id);
-	ReadData::ReadPassword(password);
+	ReadData::ReadPassword(password,true);
 
 	employee->editClient(id, "", password, NULL);
 	system("cls");
@@ -100,8 +100,7 @@ Employee* EmployeeManager::login(int id, string password) {
 		return e;
 	return nullptr;
 }
-bool clientEditOptions(Employee* employee, int choice) {
-	bool flag = true;
+void clientEditOptions(Employee* employee, int choice) {
 	switch (choice)
 	{
 	case 1:
@@ -116,32 +115,20 @@ bool clientEditOptions(Employee* employee, int choice) {
 	case 4:
 		EmployeeManager::editClientBalance(employee);
 		break;
-	case 5:
-		flag = false;
-		break;
 	default:
 		cout << "\n\nWRONG INPUT!\n\n";
 		break;
 	}
-	return flag;
 
 }
 
 void EmployeeManager::clientEditLoop(Employee* employee) {
-	bool flag = true;
-	while (flag) {
 		system("cls");
 		printClientEditMenu();
 		int choice = Screens::yourChoice();
 		system("cls");
-		flag = clientEditOptions(employee, choice);
-		if (flag) {
-			system("pause");
-		}
-		else {
-			Screens::loginEmployeeLoop(employee);
-		}
-	}
+		 clientEditOptions(employee, choice);
+		return;
 }
 bool EmployeeManager::employeeOptions(Employee* employee,int choice) { 
 	bool flag = true;

@@ -44,6 +44,11 @@ choosePassword:
 		goto choosePassword;
 	}
 };
+void ReadData::ReadPassword(string& password, bool fromOne) {
+	if(fromOne)
+		cin.ignore();
+	ReadData::ReadPassword(password);
+};
 void ReadData::ReadBalance(double &balance) {
 chooseBalance:
 	cout << "Write Client Balance (Min Balance = 1500)\n";

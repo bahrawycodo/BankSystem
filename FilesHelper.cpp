@@ -51,21 +51,22 @@ void FilesHelper::saveEmployee(string fileName, string lastIdFile, Employee e) {
 //}
 vector<Client>* FilesHelper::getClients() {
 	vector<string> ss = FilesHelper::split("Clients");
-	vector<Client> c;
+	vector<Client> *c = new vector<Client>;
 	for (int i = 0; i < ss.size(); ++i)
 	{
-		c.push_back(Parser::parseToClient(ss[i]));
+		(*c).push_back(Parser::parseToClient(ss[i]));
 	}
-	return &c;
+
+	return c;
 };
 vector<Employee>*  FilesHelper::getEmployees() {
 	vector<string> ss = FilesHelper::split("Employees");
-	vector<Employee> e;
+	vector<Employee> *e=new vector<Employee>;
 	for (int i = 0; i < ss.size(); ++i)
 	{
-		e.push_back(Parser::parseToEmployee(ss[i]));
+		(*e).push_back(Parser::parseToEmployee(ss[i]));
 	}
-	return &e;
+	return e;
 };
 Admin* FilesHelper::getAdmins() {
 	vector<string> ss = FilesHelper::split("Admins");

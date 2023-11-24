@@ -14,6 +14,7 @@ public:
     static Client* ReadClientId(Employee* employee,int &id);
     static void ReadName(string &name);
     static void ReadPassword(string &password);
+    static void ReadPassword(string &password, bool fromOne);
     static void ReadBalance(double &balance);
     static void ReadSalary(double &salary);
 };
