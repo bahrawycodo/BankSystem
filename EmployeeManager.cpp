@@ -2,6 +2,8 @@
 #include "Validation.h"
 #include "Shared.h"
 #include "ClientManger.h"
+#include "ReadData.h"
+#include "Screens.h"
 void EmployeeManager::printEmployeeMenu(){
 	cout << "(1) Display my info\n";
 	cout << "(2) Update Password\n";
@@ -12,115 +14,134 @@ void EmployeeManager::printEmployeeMenu(){
 	cout << "(7) Delete client\n";
 	cout << "(8) Logout\n";
 }
+void printClientEditMenu(){
+	cout << "(1) Edit All Data\n";
+	cout << "(2) Edit Name\n";
+	cout << "(3) Edit Password\n";
+	cout << "(4) Edit Balance\n";
+	cout << "(5) Exit\n";
+}
 void EmployeeManager::newClient(Employee* employee){
-	string name, password;
+	string name,password;
 	double balance;
-chooseName:
-	cout << "Write Client Name (between 5 to 20 chars)\n";
-	cin.ignore();
-	getline(cin, name);
-	if (!Validation::Name(name)) {
-		Validation::NameException();
-		goto chooseName;
-	}
-choosePassword:
-	cout << "Write Client Password (between 8 to 20)\n";
-	getline(cin, password);
-	if (!Validation::Password(password)) {
-		Validation::PasswordException();
-		goto choosePassword;
-	}
-chooseBalance:
-
-	cout << "Write Client Balance (Min Balance = 1500)\n";
-	cin >> balance;
-	if (!Validation::Balance(balance))
-	{
-		Validation::BalanceException();
-		goto chooseBalance;
-	}
-	Client c(0, name, password, balance);
+	ReadData::ReadName(name);
+	ReadData::ReadPassword(password);
+	ReadData::ReadBalance(balance);
+	Client c(0,name , password,balance);
 	employee->addClient(c);
-
-
+	system("cls");
+	cout << "Client Added Successfully\n";
 }
 void EmployeeManager::listAllClients(Employee* employee){
 	employee->listClient();
 }
 void EmployeeManager::searchForClient(Employee* employee){
 	int id;
-chooseId:
-	cout << "Write Client Id ";
-	cin >> id;
-	Client* c = employee->searchClient(id);
-	if (c == nullptr) {
-		cout << "Please choose a valid Id \n";
-		goto chooseId;
-	}
-	else {
-		c->DisplayMainInfo();
-	}
+	Client* c = ReadData::ReadClientId(employee, id);
+	c->DisplayMainInfo();
 }
 void EmployeeManager::editClientInfo(Employee* employee){
 	int id;
 	string name, password;
 	double balance;
-chooseId:
-	cout << "Write Client Id you want to edit\n";
-	cin >> id;
-	if (employee->searchClient(id) == nullptr) {
-		cout << "Please choose a valid Id \n";
-		goto chooseId;
-	}
-chooseName:
-	cout << "Write Client Name (between 5 to 20 chars)\n";
-	cin.ignore();
-	getline(cin, name);
-	if (!Validation::Name(name)) {
-		Validation::NameException();
-		goto chooseName;
-	}
-choosePassword:
-	cout << "Write Client Password (between 8 to 20)\n";
-	getline(cin, password);
-	if (!Validation::Password(password)) {
-		Validation::PasswordException();
-		goto choosePassword;
-	}
-chooseBalance:
-	cout << "Write Client Balance (Min Balance = 1500)\n";
-	cin >> balance;
-	if (!Validation::Balance(balance))
-	{
-		Validation::BalanceException();
-		goto chooseBalance;
-	}
+	ReadData::ReadClientId(employee, id);
+	ReadData::ReadName(name);
+	ReadData::ReadPassword(password);
+	ReadData::ReadBalance(balance);
+
 	employee->editClient(id, name, password, balance);
+	system("cls");
+	cout << "Client Data Edited Successfully\n";
+}
+void EmployeeManager::editClientName(Employee* employee) {
+	int id;
+	string name;
+	ReadData::ReadClientId(employee, id);
+	ReadData::ReadName(name);
+
+	employee->editClient(id, name, "", NULL);
+	system("cls");
+	cout << "Client Name Edited Successfully\n";
+}
+void EmployeeManager::editClientPassword(Employee* employee) {
+	int id;
+	string password;
+	ReadData::ReadClientId(employee, id);
+	ReadData::ReadPassword(password);
+
+	employee->editClient(id, "", password, NULL);
+	system("cls");
+	cout << "Client Password Edited Successfully\n";
+}
+void EmployeeManager::editClientBalance(Employee* employee) {
+	int id;
+	double balance;
+	ReadData::ReadClientId(employee, id);
+	ReadData::ReadBalance(balance);
+
+	employee->editClient(id, "", "", balance);
+	system("cls");
+	cout << "Client Balance Edited Successfully\n";
 }
 void EmployeeManager::deleteClient(Employee* employee) {
-	if (Shared::getEmployees().size() == 0) {
+	if (Shared::getClients().size() == 0) {
 		Validation::NoClients();
 		return;
 	}
 	int id;
-chooseId:
-	cout << "Write Client Id ";
-	cin >> id;
-	Client* c = employee->searchClient(id);
-
-	if (c == nullptr) {
-		cout << "Please choose a valid Id \n";
-		goto chooseId;
-	}
-	else {
-		employee->deleteClient(id);
-	}
+	ReadData::ReadClientId(employee, id);
+	employee->deleteClient(id);
+	system("cls");
+	cout << "Client Deleted Successfully\n";
 }
 Employee* EmployeeManager::login(int id, string password) { 
 	Employee* e = Shared::getEmployee(id);
 	if (e != nullptr && e->getPassword() == password)
 		return e;
 	return nullptr;
+}
+bool clientEditOptions(Employee* employee, int choice) {
+	bool flag = true;
+	switch (choice)
+	{
+	case 1:
+		EmployeeManager::editClientInfo(employee);
+		break;
+	case 2:
+		EmployeeManager::editClientName(employee);
+		break;
+	case 3:
+		EmployeeManager::editClientPassword(employee);
+		break;
+	case 4:
+		EmployeeManager::editClientBalance(employee);
+		break;
+	case 5:
+		flag = false;
+		break;
+	default:
+		cout << "\n\nWRONG INPUT!\n\n";
+		break;
+	}
+	return flag;
+
+}
+
+void EmployeeManager::clientEditLoop(Employee* employee) {
+	bool flag = true;
+	while (flag) {
+		system("cls");
+		printClientEditMenu();
+		int choice = Screens::yourChoice();
+		system("cls");
+		flag = clientEditOptions(employee, choice);
+		if (flag) {
+			system("pause");
+		}
+		else {
+			Screens::loginEmployeeLoop(employee);
+		}
+	}
 }
 bool EmployeeManager::employeeOptions(Employee* employee,int choice) { 
 	bool flag = true;
@@ -142,7 +163,7 @@ bool EmployeeManager::employeeOptions(Employee* employee,int choice) {
 		EmployeeManager::listAllClients(employee);
 		break;
 	case 6:
-		EmployeeManager::editClientInfo(employee);
+		EmployeeManager::clientEditLoop(employee);
 		break;
 	case 7:
 		EmployeeManager::deleteClient(employee);
@@ -157,3 +178,4 @@ bool EmployeeManager::employeeOptions(Employee* employee,int choice) {
 	return flag;
 
 }
+

@@ -56,7 +56,7 @@ void login() {
 	Screens::loginOptions();
 	Screens::loginScreen(Screens::yourChoice());
 }
-void loginAdminLoop(Admin* admin) {
+void Screens::loginAdminLoop(Admin* admin) {
 	bool flag = true;
 	while (flag) {
 		system("cls");
@@ -72,7 +72,7 @@ void loginAdminLoop(Admin* admin) {
 		}
 	}
 }
-void loginEmployeeLoop(Employee* employee) {
+void Screens::loginEmployeeLoop(Employee* employee) {
 	bool flag = true;
 	while (flag) {
 		system("cls");
@@ -126,7 +126,7 @@ void  loginAdmin() {
 			goto ChooseData;
 		}
 		else {
-			loginAdminLoop(admin);
+			Screens::loginAdminLoop(admin);
 		}
 	}
 }
@@ -150,7 +150,7 @@ void loginEmployee() {
 			goto ChooseData;
 		}
 		else {
-			loginEmployeeLoop(employee);
+			Screens::loginEmployeeLoop(employee);
 		}
 	}
 }

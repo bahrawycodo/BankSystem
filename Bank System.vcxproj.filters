@@ -57,6 +57,9 @@
     <ClCompile Include="Shared.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ReadData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h">
@@ -101,6 +104,9 @@
     <ClInclude Include="Shared.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ReadData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Clients.txt">
@@ -118,5 +124,6 @@
     <Text Include="Employees.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="lastAdmin.txt" />
   </ItemGroup>
 </Project>

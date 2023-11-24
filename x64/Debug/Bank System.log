@@ -1,3 +1,6 @@
-﻿  EmployeeManager.cpp
+﻿  AdminManager.cpp
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  EmployeeManager.cpp
+C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
   Bank System.vcxproj -> C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Bank System.exe

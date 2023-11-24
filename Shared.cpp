@@ -105,13 +105,29 @@ void Shared::deleteEmployee(int id) {
 }
 //Edit Methods
 void Shared::editClient(int id, string name, string password, double balance) {
-	clients[id-1].setData(name, password, balance == NULL ? clients[id].getBalance() : balance);
+	name = name == "" ? clients[id - 1].getName() : name;
+	password=password == "" ? clients[id - 1].getPassword():password;
+	balance = balance == NULL ? clients[id - 1].getBalance() : balance;
+	clients[id-1].setData(name,password , balance);
 };
 void Shared::editEmployee(int id, string name, string password, double salary) {
-	employees[id-1].setData(name, password, salary == NULL ? employees[id].getSalary() : salary);
+	name = name == "" ? employees[id - 1].getName() : name;
+	password = password == "" ? employees[id - 1].getPassword() : password;
+	salary = salary == NULL ? employees[id - 1].getSalary() : salary;
+
+	employees[id-1].setData(name, password, salary);
 };
 void Shared::editAdmin(int id, string name, string password, double salary) {
-	admin->setData(name, password, salary == NULL ? admin->getSalary() : salary);
+	admin->setData(name, password, salary);
+};
+void Shared::editAdminName(int id, string name) {
+	admin->setName(name);
+};
+void Shared::editAdminPassword(int id, string password) {
+	admin->setPassword(password);
+};
+void Shared::editAdminSalary(int id, double salary) {
+	admin->setSalary(salary);
 };
 //Display Methods
 void Shared::printClients() {

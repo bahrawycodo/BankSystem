@@ -9,5 +9,6 @@ public:
 	static Admin* login(int id, string password);
 	static void newAdmin();
 	static bool adminOptions(Admin* admin,int choice);
+
 };
 

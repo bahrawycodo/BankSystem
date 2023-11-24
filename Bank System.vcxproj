@@ -138,6 +138,7 @@
     <ClCompile Include="FilesHelper.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="ReadData.cpp" />
     <ClCompile Include="Screens.cpp" />
     <ClCompile Include="Shared.cpp" />
     <ClCompile Include="Validation.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="FilesHelper.h" />
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="ReadData.h" />
     <ClInclude Include="Screens.h" />
     <ClInclude Include="Shared.h" />
     <ClInclude Include="Validation.h" />
