@@ -16,12 +16,18 @@ chooseAmount:
 		Validation::LessZeroBalanceExeption();
 		goto chooseAmount;
 	}
+	else {
+		cout << "Withdraw Completed Successfully\n";
+	}
+
 }
 void Deposit(Client* client) {
 	double amount;
 	cout << "Write Amount you want\n";
 	cin >> amount;
 	client->deposit(amount);
+	cout << "Deposit Successfully\n";
+
 }
 void transferAmount(Client* client) {
 	int id;
@@ -42,6 +48,9 @@ chooseAmount:
 	if (!success) {
 		Validation::LessZeroBalanceExeption();
 		goto chooseAmount;
+	}
+	else {
+		cout << "Transfered Successfully\n";
 	}
 }
 void ClientManger::printClientMenu() {
