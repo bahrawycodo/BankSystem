@@ -18,7 +18,7 @@ public:
 	//Setters
 	void setData(string name, string password);
 	void setId(int id);
-	bool setName(string name);
+	void setName(string name);
 	bool setPassword(string password);
 	//Methods
 	void DisplayMainInfo();

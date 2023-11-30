@@ -19,8 +19,7 @@ void Employee::setData(string name, string password, double salary) {
 }
 
 void Employee::setSalary(double salary) {
-	if (Validation::Salary(salary))
-		this->salary = salary;
+	this->salary = salary;
 }
 //Operator = Overloading
 void Employee::operator = (Employee e) {

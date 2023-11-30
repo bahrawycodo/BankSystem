@@ -55,7 +55,7 @@ void ClientManger::printClientMenu() {
 }
 void ClientManger::updatePassword(Person* person) {
 	string password;
-	cout << "Enter Password";
+	cout << "Enter Password\n";
 	cin >> password;
 	bool flag = person->setPassword(password);
 	if (!flag) {

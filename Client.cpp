@@ -17,8 +17,7 @@ void Client::setData(string name, string password, double balance) {
 	this->balance = balance;
 }
 void Client::setBalance(double balance) {
-	if (Validation::Balance(balance))
-		this->balance = balance;
+	this->balance = balance;
 }
 //Operator = Overloading
 void Client::operator = (Client c) {

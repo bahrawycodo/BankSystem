@@ -60,5 +60,13 @@ chooseBalance:
 	}
 };
 void ReadData::ReadSalary(double& salary){
+chooseSalary:
+	cout << "Write Employee Salary (Min Salary = 5000)\n";
+	cin >> salary;
+	if (!Validation::Salary(salary))
+	{
+		Validation::SalaryException();
+		goto chooseSalary;
+	}
 
 }

@@ -122,7 +122,7 @@ void editEmployeePassword(Admin* admin) {
 void editEmployeeSalary(Admin* admin) {
 	int id;
 	double salary;
-	ReadData::ReadClientId(admin, id);
+	ReadData::ReadEmployeeId(admin, id);
 	ReadData::ReadSalary(salary);
 
 	admin->editEmployee(id, "", "", salary);
