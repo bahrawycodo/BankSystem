@@ -1,6 +1,6 @@
 #include "ReadData.h"
 #include "Validation.h"
-
+#include "Shared.h"
 void ReadData::ReadLoginData(int& id, string& password) {
 	cout << "Write your Id\n";
 	cin >> id;
@@ -32,6 +32,16 @@ chooseId:
 		goto chooseId;
 	}
 	return c;
+};
+void ReadData::ReadClientId(Client* client,int& id) {
+chooseId:
+	cout << "Write Client Id you want\n";
+	cin >> id;
+	client = Shared::getClient(id);
+	if (client == nullptr) {
+		cout << "Please choose a valid Id \n";
+		goto chooseId;
+	}
 };
 void ReadData::ReadName(string &name) {
 chooseName:
@@ -79,3 +89,8 @@ chooseSalary:
 	}
 
 }
+void ReadData::ReadAmount(double& amount) {
+	cout << "Write Amount you want\n";
+	cin >> amount;
+}
+

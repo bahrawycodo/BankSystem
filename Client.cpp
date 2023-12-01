@@ -1,9 +1,6 @@
 #include "Person.h"
 #include "Client.h"
-#include <exception>
 #include "validation.h"
-#include <vector>
-#include "FileManager.h"
 Client::Client() {
 	this->balance = 0;
 }

@@ -7,50 +7,52 @@ void checkBalance(Client* client) {
 	client->checkBalance();
 }
 void Withdrow(Client* client) {
-	double amount;
-chooseAmount:
-	cout << "Write Amount you want\n";
-	cin >> amount;
-
-	bool success = client->withdraw(amount);
-	if (!success) {
+	if (client->getBalance() == 0) {
 		Validation::LessZeroBalanceExeption();
-		goto chooseAmount;
 	}
 	else {
-		cout << "Withdraw Completed Successfully\n";
+			double amount;
+		chooseAmount:
+			ReadData::ReadAmount(amount);
+
+				bool success = client->withdraw(amount);
+				if (!success) {
+
+					goto chooseAmount;
+				}
+				else {
+					cout << "Withdraw Completed Successfully\n";
+				}
 	}
 }
 void Deposit(Client* client) {
 	double amount;
-	cout << "Write Amount you want\n";
-	cin >> amount;
+	ReadData::ReadAmount(amount);
 	client->deposit(amount);
 	cout << "Deposit Successfully\n";
 
 }
 void transferAmount(Client* client) {
-	int id;
-	double amount;
-chooseId:
-	cout << "Write Client Id that you want  to transfer to\n";
-	cin >> id;
-	Client* c = Shared::getClient(id);
-	if (c == nullptr) {
-		cout << "Please choose a valid Id \n";
-		goto chooseId;
-	}
-chooseAmount:
-	cout << "Write Amount you want\n";
-	cin >> amount;
-
-	bool success = client->transferTo(amount, c);
-	if (!success) {
+	if (client->getBalance() == 0) {
 		Validation::LessZeroBalanceExeption();
-		goto chooseAmount;
 	}
 	else {
-		cout << "Transfered Successfully\n";
+			int id;
+			double amount;
+
+			Client* c = {};
+			ReadData::ReadClientId(c, id);
+	
+		chooseAmount:
+			ReadData::ReadAmount(amount);
+			bool success = client->transferTo(amount, c);
+			if (!success) {
+				Validation::LessZeroBalanceExeption();
+				goto chooseAmount;
+			}
+			else {
+				cout << "Transfered Successfully\n";
+			}
 	}
 }
 void ClientManger::printClientMenu() {
