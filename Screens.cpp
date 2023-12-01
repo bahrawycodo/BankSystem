@@ -8,6 +8,7 @@
 #include "ClientManger.h"
 #include "Validation.h"
 #include "Shared.h"
+#include "ReadData.h"
 
 using namespace std;
 void Screens::bankName() {
@@ -38,70 +39,71 @@ void Screens::loginOptions() {
 	cout << "(2) Employee\n";
 	cout << "(3) Client\n";
 	cout << "(4) Exit\n";
-	cout << "Login as: ";
-}
-int Screens::yourChoice() {
-	int choice;
-	cin >> choice;
-	return choice;
 }
 
-void Screens::invalid(int c) {
 
-}
-void Screens::logout() {
-
-}
 void login() {
+	int choice = 0;
 	Screens::loginOptions();
-	Screens::loginScreen(Screens::yourChoice());
+	ReadData::yourChoice(choice);
+	Screens::loginScreen(choice);
 }
 void Screens::loginAdminLoop(Admin* admin) {
-	bool flag = true;
-	while (flag) {
+	int choice=0;
+	for (;;)
+	{
 		system("cls");
 		AdminManager::printAdminMenu();
-		int choice = Screens::yourChoice();
+		ReadData::yourChoice(choice);
 		system("cls");
-		flag = AdminManager::adminOptions(admin, choice);
-		if (flag) {
-			system("pause");
-		}
-		else {
-			login();
-		}
+		 AdminManager::adminOptions(admin, choice);
+		 if (choice == 6 || choice == 11)
+			 continue;
+		 else if (choice == 13)
+		 {
+			 login();
+			 break;
+		 }
+		 else
+			 system("pause");
 	}
 }
 void Screens::loginEmployeeLoop(Employee* employee) {
-	bool flag = true;
-	while (flag) {
+	int choice=0;
+	for (;;)
+	{
 		system("cls");
 		EmployeeManager::printEmployeeMenu();
-		int choice = Screens::yourChoice();
+		ReadData::yourChoice(choice);
 		system("cls");
-		flag = EmployeeManager::employeeOptions(employee, choice);
-		if (flag) {
-			system("pause");
-		}
-		else {
+		EmployeeManager::employeeOptions(employee, choice);
+		if (choice == 6)
+			continue;
+		else if (choice == 8)
+		{
 			login();
+			break;
 		}
+		else
+			system("pause");
 	}
 }
 void loginClientLoop(Client* client) {
-	bool flag = true;
-	while (flag) {
+	int choice = 0;
+	for (;;)
+	{
 		system("cls");
 		ClientManger::printClientMenu();
-		int choice = Screens::yourChoice();
+		ReadData::yourChoice(choice);
 		system("cls");
-		flag = ClientManger::clientOptions(client, choice);
-		if (flag) {
-			system("pause");
-		}
-		else {
+		ClientManger::clientOptions(client, choice);
+		if (choice == 7)
+		{
 			login();
+			break;
 		}
+		else
+			system("pause");
 	}
 }
 void  loginAdmin() {
@@ -115,10 +117,7 @@ void  loginAdmin() {
 		int id;
 		string password;
 	ChooseData:
-		cout << "Write your Id\n";
-		cin >> id;
-		cout << "Write your Password\n";
-		cin >> password;
+		ReadData::ReadLoginData(id, password);
 		Admin* admin = AdminManager::login(id, password);
 		if (admin == nullptr) {
 			system("cls");
@@ -139,10 +138,7 @@ void loginEmployee() {
 		int id;
 		string password;
 	ChooseData:
-		cout << "Write your Id\n";
-		cin >> id;
-		cout << "Write your Password\n";
-		cin >> password;
+		ReadData::ReadLoginData(id, password);
 		Employee* employee = EmployeeManager::login(id, password);
 		if (employee == nullptr) {
 			system("cls");
@@ -163,10 +159,7 @@ void loginClient() {
 		int id;
 		string password;
 	ChooseData:
-		cout << "Write your Id\n";
-		cin >> id;
-		cout << "Write your Password\n";
-		cin >> password;
+		ReadData::ReadLoginData(id,password);
 		Client* client = ClientManger::login(id, password);
 		if (client == nullptr) {
 			system("cls");

@@ -14,7 +14,7 @@ public:
 	static void editClientBalance(Employee* employee);
 	static void deleteClient(Employee* employee);
 	static Employee* login(int id, string password);
-	static bool employeeOptions(Employee* employee,int choice);
+	static void employeeOptions(Employee* employee,int choice);
 	static void clientEditLoop(Employee* employee);
 
 };

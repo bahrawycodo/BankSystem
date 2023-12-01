@@ -52,13 +52,13 @@ vector<Employee> Shared::getEmployees() {
 void Shared::reloadClients() {
 	for (int i = 0; i < clients.size(); i++)
 	{
-		clients[i].setId(i);
+		clients[i].setId(i+1);
 	}
 }
 void Shared::reloadEmployees() {
 	for (int i = 0; i < employees.size(); i++)
 	{
-		employees[i].setId(i);
+		employees[i].setId(i+1);
 	}
 }
 

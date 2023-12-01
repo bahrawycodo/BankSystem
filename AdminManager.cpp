@@ -4,10 +4,9 @@
 #include "Validation.h"
 #include "Shared.h"
 #include "Admin.h"
-#include <exception>
-#include "validation.h"
 #include "ReadData.h"
 #include "Screens.h"
+#include <windows.h>
 
 void AdminManager::printAdminMenu(){
 	cout << "(1) Display my info\n";
@@ -23,48 +22,29 @@ void AdminManager::printAdminMenu(){
 	cout << "(11) Edit Employee info\n";
 	cout << "(12) Delete Employee\n";
 	cout << "(13) Logout\n";
-	cout << "Your choise is: ";
 }
 void printEmployeeEditMenu() {
 	cout << "(1) Edit All Data\n";
 	cout << "(2) Edit Name\n";
 	cout << "(3) Edit Password\n";
-	cout << "(4) Edit Balance\n";
+	cout << "(4) Edit Salary\n";
 	cout << "(5) Exit\n";
 }
 void AdminManager::newAdmin() {
 	string name, password;
 	double salary;
-chooseName:
-	cout << "Write Admin Name (between 5 to 20 chars)\n";
-	cin.ignore();
-	getline(cin, name);
-	if (!Validation::Name(name)) {
-		Validation::NameException();
-		goto chooseName;
-	}
-choosePassword:
-	cout << "Write Admin Password (between 8 to 20)\n";
-	getline(cin, password);
-	if (!Validation::Password(password)) {
-		Validation::PasswordException();
-		goto choosePassword;
-	}
-chooseBalance:
-	cout << "Write Admin Salary (Min Salary = 5000)\n";
-	cin >> salary;
-	if (!Validation::Salary(salary))
-	{
-		Validation::SalaryException();
-		goto chooseBalance;
-	}
+	ReadData::ReadName(name);
+	ReadData::ReadPassword(password);
+	ReadData::ReadSalary(salary);
+
 	Admin *a = Admin::getAdmin();
 	a->setId(1);
 	a->setName(name);
 	a->setPassword(password);
 	a->setSalary(salary);
 	Shared::addAdmin(a);
-
+	system("cls");
+	cout << "Admin Added Successfully\n";
 }
 void newEmployee(Admin* admin) {
 	string name, password;
@@ -86,7 +66,7 @@ void editEmployee(Admin* admin) {
 	int id;
 	string name, password;
 	double salary;
-	ReadData::ReadClientId(admin, id);
+	ReadData::ReadEmployeeId(admin, id);
 	ReadData::ReadName(name);
 	ReadData::ReadPassword(password);
 	ReadData::ReadSalary(salary);
@@ -99,7 +79,7 @@ void editEmployee(Admin* admin) {
 void editEmployeeName(Admin* admin) {
 	int id;
 	string name;
-	ReadData::ReadClientId(admin, id);
+	ReadData::ReadEmployeeId(admin, id);
 	ReadData::ReadName(name);
 
 	admin->editEmployee(id,name,"", NULL);
@@ -110,7 +90,7 @@ void editEmployeeName(Admin* admin) {
 void editEmployeePassword(Admin* admin) {
 	int id;
 	string password;
-	ReadData::ReadClientId(admin, id);
+	ReadData::ReadEmployeeId(admin, id);
 	ReadData::ReadPassword(password,true);
 
 	admin->editEmployee(id, "", password, NULL);
@@ -136,15 +116,21 @@ void employeeEditOptions(Admin* admin, int choice) {
 	{
 	case 1:
 		editEmployee(admin);
+		system("pause");
 		break;
 	case 2:
 		editEmployeeName(admin);
+		system("pause");
 		break;
 	case 3:
 		editEmployeePassword(admin);
+		system("pause");
 		break;
 	case 4:
 		editEmployeeSalary(admin);
+		system("pause");
+		break;
+	case 5:
 		break;
 	default:
 		cout << "\n\nWRONG INPUT!\n\n";
@@ -174,15 +160,15 @@ Admin* AdminManager::login(int id, string password){
 	return nullptr;
 }
 void employeeEditLoop(Admin* admin) {
-		system("cls");
-		printEmployeeEditMenu();
-		int choice = Screens::yourChoice();
-		system("cls");
-		employeeEditOptions(admin, choice);
-		return;
+	int choice = 0;
+	system("cls");
+	printEmployeeEditMenu();
+	ReadData::yourChoice(choice);
+	system("cls");
+	employeeEditOptions(admin, choice);
+	return;
 }
-bool AdminManager::adminOptions(Admin* admin,int choice){
-	bool flag = true;
+void AdminManager::adminOptions(Admin* admin,int choice){
 	switch (choice)
 		{
 		case 1:
@@ -222,12 +208,10 @@ bool AdminManager::adminOptions(Admin* admin,int choice){
 			deleteEmployee(admin);
 			break;
 		case 13:
-			flag = false;
 			break;
 		default:
 			cout << "\n\nWRONG INPUT!\n\n";
 			break;
 		}
-	return flag;
 }
 

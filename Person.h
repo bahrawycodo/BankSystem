@@ -19,7 +19,7 @@ public:
 	void setData(string name, string password);
 	void setId(int id);
 	void setName(string name);
-	bool setPassword(string password);
+	void setPassword(string password);
 	//Methods
 	void DisplayMainInfo();
 	void Display();	

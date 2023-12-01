@@ -7,6 +7,6 @@ public:
 	static void printClientMenu();
 	static void updatePassword(Person* person);
 	static Client* login(int id, string password);
-	static bool clientOptions(Client* client,int choice);
+	static void clientOptions(Client* client,int choice);
 };
 

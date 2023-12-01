@@ -1,7 +1,16 @@
 #include "ReadData.h"
 #include "Validation.h"
 
-
+void ReadData::ReadLoginData(int& id, string& password) {
+	cout << "Write your Id\n";
+	cin >> id;
+	cout << "Write your Password\n";
+	cin >> password;
+}
+void ReadData::yourChoice(int& choice) {
+	cout << "Your choice is: ";
+	cin >> choice;
+}
 Employee* ReadData::ReadEmployeeId(Admin* admin, int& id) {
 chooseId:
 	cout << "Write Employee Id you want\n";
@@ -37,7 +46,7 @@ chooseName:
 };
 void ReadData::ReadPassword(string &password) {
 choosePassword:
-	cout << "Write Client Password (between 8 to 20)\n";
+	cout << "Write Password (between 8 to 20)\n";
 	getline(cin, password);
 	if (!Validation::Password(password)) {
 		Validation::PasswordException();

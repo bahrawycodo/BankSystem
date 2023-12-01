@@ -2,6 +2,7 @@
 #include "FileManager.h"
 #include "Validation.h"
 #include "Shared.h"
+#include "ReadData.h"
 void checkBalance(Client* client) {
 	client->checkBalance();
 }
@@ -19,7 +20,6 @@ chooseAmount:
 	else {
 		cout << "Withdraw Completed Successfully\n";
 	}
-
 }
 void Deposit(Client* client) {
 	double amount;
@@ -63,13 +63,11 @@ void ClientManger::printClientMenu() {
 	cout << "(7) Logout\n";
 }
 void ClientManger::updatePassword(Person* person) {
+
 	string password;
-	cout << "Enter Password\n";
-	cin >> password;
-	bool flag = person->setPassword(password);
-	if (!flag) {
-		Validation::PasswordException();
-	}
+	ReadData::ReadPassword(password, true);
+	 person->setPassword(password);
+	cout << "Password Updated Successfully\n";
 }
 Client* ClientManger::login(int id, string password){
 	Client* c = Shared::getClient(id);
@@ -78,8 +76,7 @@ Client* ClientManger::login(int id, string password){
 	return nullptr;
 
 }
-bool ClientManger::clientOptions(Client* client,int choice){
-	bool flag = true;
+void ClientManger::clientOptions(Client* client,int choice){
 	switch (choice)
 	{
 	case 1:
@@ -101,11 +98,9 @@ bool ClientManger::clientOptions(Client* client,int choice){
 		transferAmount(client);
 		break;
 	case 7:
-		flag = false;
 		break;
 	default:
 		cout << "\n\nWRONG INPUT!\n\n";
 		break;
 	}
-	return flag;
 }

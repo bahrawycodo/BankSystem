@@ -10,6 +10,8 @@ using namespace std;
 class ReadData
 {
 public:
+    static void ReadLoginData(int& id, string& password);
+    static void yourChoice(int& choice);
     static Employee* ReadEmployeeId(Admin* admin,int &id);
     static Client* ReadClientId(Employee* employee,int &id);
     static void ReadName(string &name);

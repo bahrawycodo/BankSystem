@@ -3,7 +3,6 @@
 #include "Shared.h"
 #include "ClientManger.h"
 #include "ReadData.h"
-#include "Screens.h"
 void EmployeeManager::printEmployeeMenu(){
 	cout << "(1) Display my info\n";
 	cout << "(2) Update Password\n";
@@ -105,15 +104,22 @@ void clientEditOptions(Employee* employee, int choice) {
 	{
 	case 1:
 		EmployeeManager::editClientInfo(employee);
+		system("pause");
 		break;
 	case 2:
 		EmployeeManager::editClientName(employee);
+		system("pause");
 		break;
 	case 3:
 		EmployeeManager::editClientPassword(employee);
+		system("pause");
 		break;
 	case 4:
 		EmployeeManager::editClientBalance(employee);
+		system("pause");
+		break;
+	case 5:
+
 		break;
 	default:
 		cout << "\n\nWRONG INPUT!\n\n";
@@ -123,15 +129,15 @@ void clientEditOptions(Employee* employee, int choice) {
 }
 
 void EmployeeManager::clientEditLoop(Employee* employee) {
+		int choice = 0;	
 		system("cls");
 		printClientEditMenu();
-		int choice = Screens::yourChoice();
+		ReadData::yourChoice(choice);
 		system("cls");
 		 clientEditOptions(employee, choice);
 		return;
 }
-bool EmployeeManager::employeeOptions(Employee* employee,int choice) { 
-	bool flag = true;
+void EmployeeManager::employeeOptions(Employee* employee,int choice) { 
 	switch (choice)
 	{
 	case 1:
@@ -156,13 +162,10 @@ bool EmployeeManager::employeeOptions(Employee* employee,int choice) {
 		EmployeeManager::deleteClient(employee);
 		break;
 	case 8:
-		flag = false;
 		break;
 	default:
 		cout << "\n\nWRONG INPUT!\n\n";
 		break;
 	}
-	return flag;
-
 }
 

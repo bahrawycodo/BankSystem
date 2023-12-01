@@ -31,13 +31,8 @@ void Person::setId(int id) {
 void Person::setName(string name) {
 	this->name = name;
 }
-bool Person::setPassword(string password) {
-	if (Validation::Password(password))
-	{
-		this->password = password;
-		return true;
-	}
-	return false;
+void Person::setPassword(string password) {
+	this->password = password;
 }
 void Person::DisplayMainInfo() {
 	cout << this->id << endl;
