@@ -1,5 +1,5 @@
-﻿  Shared.cpp
+﻿  Client.cpp
+  Employee.cpp
 C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.cpp(86,24): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\Shared.cpp(90,26): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   Bank System.vcxproj -> C:\Users\Bahrawy Codo\source\repos\bahrawycodo\BankSystem\x64\Debug\Bank System.exe
