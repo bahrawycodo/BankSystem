@@ -5,10 +5,9 @@
 #include <vector>
 #include "FileManager.h"
 Client::Client() {
-	this->balance = 1500;
+	this->balance = 0;
 }
 Client::Client(int id,string name, string password, double balance) : Person(id,name, password) {
-	this->balance = 1500;
 	this->setBalance(balance);
 }
 //Setters
